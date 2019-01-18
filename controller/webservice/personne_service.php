@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
         foreach ($personnes as $pers) {
             $tab[] = $pers->toArray();
         }
-        header('Contnt-Type: application/json');
+        header('Content-type: application/json');
         echo (json_encode($tab));
     } catch (PDOException $ex) {
         http_response_code(500);
