@@ -1,7 +1,6 @@
 <?php
 
 namespace dao;
-include MODEL . '/Personne.php';
 
 use \PDO;
 use model\Personne;

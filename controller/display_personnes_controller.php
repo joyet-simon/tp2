@@ -1,7 +1,6 @@
 <?php
 
 include '../setup.php';
-include DAO . '/PersonneDao.php';
 use dao\PersonneDao;
 
 try {

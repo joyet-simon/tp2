@@ -1,5 +1,11 @@
 {
     "name": "neumi/tp2",
     "description": "",
-    "require": {}
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "model\\": "model/",
+            "dao\\": "dao/"
+        }
+    }
 }

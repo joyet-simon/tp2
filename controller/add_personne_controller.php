@@ -1,13 +1,12 @@
 <?php
 
 include '../setup.php';
-include DAO . '/PersonneDao.php';
-
 use model\Personne;
 use dao\PersonneDao;
 
+
 if ($_SERVER['REQUEST_METHOD'] === "GET") {
-    include '../view/add_personne.php';
+    include VIEW . '/add_personne.php';
 }
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
