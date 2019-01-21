@@ -46,4 +46,14 @@ class PersonneDao
         $stmt->bindValue(':first_name', $personne->getFirstName());
         $stmt->execute();
     }
+
+    public function getPersonneById(int $id) : Personne
+    {
+        $sql = "select * from personne where id = {$id}";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        $pers = new Personne($row['first_name'], $row['last_name'], $row['id']);
+        return $pers;
+    }
 }
