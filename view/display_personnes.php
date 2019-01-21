@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
         crossorigin="anonymous">
     <link rel="stylesheet" href="./public/css/master.css">
-    
+
 </head>
 
 <body>
-    <form action="/add_personne_controller.php"  method="get" id="form">
-        <button class="btn btn-outline-info" >Ajouter</button>
+    <form action="/add_personne_controller.php" method="get" id="form">
+        <button class="btn btn-outline-info">Ajouter</button>
     </form>
     <table class="table table-striped" id="table">
         <tr class="thead-dark">
@@ -22,16 +22,18 @@
             <th>Prénom</th>
             <th>Nom</th>
         </tr>
-        <?php foreach ($personnes as $pers) : ?>
+        <?php foreach ($personnes as $pers) :
+            $id = htmlspecialchars($pers->getId()) ?>
         <tr>
             <td>
-                <?= $pers->getId() ?>
+                <a href="/update_personne_controller.php?id=<?= $id ?>">
+                    <?= $id ?></a>
             </td>
             <td>
-                <?= $pers->getFirstName() ?>
+                <?= htmlspecialchars($pers->getFirstName()) ?>
             </td>
             <td>
-                <?= $pers->getLastName() ?>
+                <?= htmlspecialchars($pers->getLastName()) ?>
             </td>
         </tr>
         <?php endforeach; ?>

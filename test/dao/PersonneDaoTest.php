@@ -27,4 +27,15 @@ class PersonneDaoTest extends TestCase
         $result = PersonneDaoTest::$dao->getPersonneById(55);
         $this->assertAttributeEquals("Cloud", "first_name", $result);
     }
+
+    public function testUpdatePersonne()
+    {
+        $result = PersonneDaoTest::$dao->getPersonneById(2);
+        $result->setFirstName('Toto');
+        $result->setLastName('Tata');
+        PersonneDaoTest::$dao->updatePersonne($result);
+        $result = PersonneDaoTest::$dao->getPersonneById(2);
+        $this->assertAttributeEquals("Toto", "first_name", $result);
+        $this->assertAttributeEquals("Tata", "last_name", $result);
+    }
 }

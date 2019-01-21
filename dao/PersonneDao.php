@@ -53,7 +53,19 @@ class PersonneDao
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
         $row = $stmt->fetch(PDO::FETCH_ASSOC);
-        $pers = new Personne($row['first_name'], $row['last_name'], $row['id']);
-        return $pers;
+        if ($row) {
+            return new Personne($row['first_name'], $row['last_name'], $row['id']);
+        }
+        return Personne::createNullObject();
+    }
+
+    public function updatePersonne(Personne $personne)
+    {
+        $sql = "update personne set first_name = :first_name, last_name = :last_name where id = :id";
+        $stmt = $this->pdo->prepare($sql);
+        $stmt->bindValue(':last_name', $personne->getLastName());
+        $stmt->bindValue(':first_name', $personne->getFirstName());
+        $stmt->bindValue(':id', $personne->getId());
+        $stmt->execute();
     }
 }

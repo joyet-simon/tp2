@@ -15,6 +15,11 @@ class Personne
         $this->last_name = $last_name;
     }
 
+    public static function createNullObject() : Personne
+    {
+        return new Personne('', '', 0);
+    }
+
     public function toArray() : array
     {
         return [
